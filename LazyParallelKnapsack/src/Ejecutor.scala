@@ -50,3 +50,41 @@ object Ejecutor extends App {
   println("tiempo de ejecucion: "+(nanoTiempo/1000000)+"ms");
   Thread.sleep(2000);
 }
+
+object Alt{
+  // Alternativa
+    val elements = Seq(
+    (9,150),
+    (13,35),
+    (153,200),
+    (50,160),
+    (15,60),
+    (68,45),
+    (27,60),
+    (39,40),
+    (23,30),
+    (52,10),
+    (11,70),
+    (32,30),
+    (24,15),
+    (48,10),
+    (73,40),
+    (42,70),
+    (43,75),
+    (22,80),
+    (7,20),
+    (18,12),
+    (4,50),
+    (30 ,10)
+  )
+  def m2(capacidad: Int, valorAcc, elementos: Seq[(Int, Int)]): Int = {
+    (elemntos) match {
+      case Nil => valorAcc
+      case e :: resto if e._2 > capacidad => valorAcc
+      case e :: resto => 
+        val nuevaCap = capacidad - e._2
+        val nuevoVal = valorAcc + e._1
+        math.max(m(nuevaCap,nuevoVal,resto),m(capacidad,valorAcc,resto))
+    }
+  }
+}
